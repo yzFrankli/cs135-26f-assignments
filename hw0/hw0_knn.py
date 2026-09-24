@@ -54,4 +54,35 @@ def calc_k_nearest_neighbors(data_NF, query_QF, K=1):
     #       At each q value, compute distances to all N neighbors
     #                        then find the K closest neighbors
     #                        then fill neighb_QKF with neighbors' features
-    return None
+
+    k = 0
+    # repeat for all query vectors Q
+    while k < Q:
+        l = 0
+        valArr = np.empty(K)
+        # repeat for K closest vectors for single query vector
+        while l < K:
+            currVal = 100
+            i = 0
+            # compare against all vectors in data 
+            while i < N:
+                result = query_QF[k] - data_NF[i]
+                # print(query_QF[k])
+                result = result * result
+                result = np.sum(result)
+                result = np.sqrt(result)
+                # put smallest in valArr
+                if currVal > result and not np.any(valArr[:l] == i):
+                    currVal = result
+                    valArr[l] = i
+                i += 1
+            l += 1
+        # inserting closest vectors to query vector in neighbor array
+        j = 0
+        while j < K:
+            neighb_QKF[k, j, :] = data_NF[int(valArr[j])]
+            j += 1
+        k += 1
+      
+
+    return neighb_QKF

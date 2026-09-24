@@ -50,3 +50,4 @@ array([[ 0., -1.],
 
 import numpy as np
 from hw0_knn import calc_k_nearest_neighbors
+
