@@ -80,8 +80,16 @@ class LeastSquaresLinearRegressor(object):
 
         # Hint: Use np.linalg.solve
         # Using np.linalg.inv may cause issues
-        pass # TODO fixme
+        x_mean = np.mean(x_NF, axis=0) 
+        y_mean = np.mean(y_N)
 
+        x = x_NF - x_mean  #(N, F)
+        y = y_N - y_mean   #(N,)
+        A = x.T @ x        #(N, F)
+        b = x.T @ y        #(F,)
+
+        self.w_F = np.linalg.solve(A, b)
+        self.b = y_mean - np.dot(self.w_F, x_mean)
 
     def predict(self, x_MF):
         ''' Make predictions given input features for M examples
@@ -96,9 +104,10 @@ class LeastSquaresLinearRegressor(object):
         -------
         yhat_M : 1D array, size M
             Each value is the predicted scalar for one example
-        '''
-        # TODO FIX ME
-        return np.asarray([0.0])
+        '''        
+        return self.b + self.w_F @ x_MF.T
+    
+    
 
 
 
