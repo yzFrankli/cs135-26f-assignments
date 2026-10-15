@@ -1,0 +1,26 @@
+{
+  "//": "Ships with the course folder so students never open the interpreter picker.",
+
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+
+  "//windows": "VS Code resolves the POSIX path above on macOS/Linux. On Windows the interpreter lives at .venv\\Scripts\\python.exe; the Python extension resolves either form from the workspace .venv, but if a Windows student sees the wrong interpreter, have them run Python: Select Interpreter and pick the .venv entry once.",
+
+  "//": "jupyter.notebookFileRoot should NOT be ${workspaceFolder}",
+  "jupyter.notebookFileRoot": "${fileDirname}",
+  "notebook.output.textLineLimit": 60,
+
+  "files.exclude": {
+    "**/.ipynb_checkpoints": true,
+    "**/__pycache__": true
+  },
+
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.alwaysUseUv": true,
+
+  "//AI_Disable": "Disable VSCode AI features for the labs. The point is to program these yourselves!",
+
+  "chat.disableAIFeatures": true,
+  "github.copilot.enable": { "*": false },
+  "editor.inlineSuggest.enabled": false
+}
