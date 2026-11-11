@@ -15,7 +15,7 @@
     "**/__pycache__": true
   },
 
-  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.defaultEnvManager": "ms-python.python:venv",
   "python-envs.alwaysUseUv": true,
 
   "//AI_Disable": "Disable VSCode AI features for the labs. The point is to program these yourselves!",
